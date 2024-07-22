@@ -54,15 +54,23 @@ Future<String> searchNearby({
       var result = await response.stream.bytesToString();
       print("API Response: $result"); // Debug print
 
+      // Map<String, dynamic> data = jsonDecode(result);
+
       Map<String, dynamic> data = jsonDecode(result);
+      if (data.isEmpty) return 'Nothing Found at location';
+
       var place = data['places'][0];
+      if (place == null) return "Error";
+
+      print(place);
+
       String displayName = place['displayName']['text'].toString();
       String websiteUri = place['websiteUri'];
       print(displayName);
       print(websiteUri);
       _launchURL(websiteUri);
 
-      return result;
+      return {}
     } else {
       var errorBody = await response.stream.bytesToString();
       print("Error Response: $errorBody"); // Debug print
