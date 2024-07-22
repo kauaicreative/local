@@ -68,7 +68,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     style: Theme.of(context).textTheme.bodyMedium),
               ),
               SizedBox(height: 20),
-              Text('Business:',
+              Text('Info:',
                   style: Theme.of(context).textTheme.headlineSmall),
               Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -77,7 +77,6 @@ class _MyHomePageState extends State<MyHomePage> {
                   style: Theme.of(context)
                       .textTheme
                       .bodyMedium
-                      ?.copyWith(fontFamily: 'RobotoMono'),
                 ),
               ),
               SizedBox(height: 20), // Add spacing between text and buttons

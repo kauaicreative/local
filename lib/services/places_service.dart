@@ -1,9 +1,8 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:url_launcher/url_launcher.dart';
-
+// import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 Future<String> searchNearby({
   required double? lat,
@@ -11,7 +10,10 @@ Future<String> searchNearby({
 }) async {
   var client = http.Client();
 
-  String? apiKey = dotenv.env['GOOGLE_MAPS_API'];
+  print(Uri.base.queryParameters['api']);
+
+  // String? apiKey = dotenv.env['GOOGLE_MAPS_API'];
+  String? apiKey = Uri.base.queryParameters['api'];
   if (apiKey == null) {
     throw ArgumentError('API key is required');
   }
