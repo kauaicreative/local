@@ -1,8 +1,8 @@
-// Maps AIP Key AIzaSyDdtoNEA3bmTJnyBzE2WHuoZL5ENpev_ks
-import 'dart:html' as html;
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'dart:html' as html;
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
@@ -42,7 +42,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Future<void> _getBusinessInfo() async {
     if (_latitude == null || _longitude == null) return;
 
-    const apiKey = 'AIzaSyDdtoNEA3bmTJnyBzE2WHuoZL5ENpev_ks';
+    var apiKey = dotenv.env['GOOGLE_MAPS_API'];
     final url = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=$_latitude,$_longitude&radius=50&key=$apiKey';
 
     try {
