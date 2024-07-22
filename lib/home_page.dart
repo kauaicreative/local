@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'services/places_service.dart';
 import 'services/location_service.dart';
+// import 'package:logger_screen/logger_screen.dart';
 // import 'package:url_launcher/url_launcher.dart';
 // import 'package:flutter_json_view/flutter_json_view.dart';
 
@@ -14,7 +15,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   String _location = "";
-  String _businessInfo = "";
+  String _info = "";
 
   @override
   void initState() {
@@ -24,7 +25,9 @@ class _MyHomePageState extends State<MyHomePage> {
 
   Future _init([double? lat, double? lng]) async {
     if (lat == null) {
-      _location = "Getting location...";
+      setState(() {
+        _location = "Getting location...";
+      });
       final location = await LocationService.getLocation();
       lat = location['lat'];
       lng = location['lng'];
@@ -37,7 +40,7 @@ class _MyHomePageState extends State<MyHomePage> {
     String result = await searchNearby(lat: lat, lng: lng);
 
     setState(() {
-      _businessInfo = result;
+      _info = result;
     });
 
     // print(result.places.websiteUri);
@@ -49,6 +52,9 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
+
+      // body: TalkerScreen(talker: widget.talker),
+
       body: SingleChildScrollView(
         child: Center(
           child: Column(
@@ -67,7 +73,7 @@ class _MyHomePageState extends State<MyHomePage> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: SelectableText(
-                  _businessInfo,
+                  _info,
                   style: Theme.of(context)
                       .textTheme
                       .bodyMedium
@@ -100,7 +106,7 @@ class _MyHomePageState extends State<MyHomePage> {
           SizedBox(width: 20), // Add spacing between buttons
           FloatingActionButton(
             onPressed: () {
-              _init(36.2033473,-81.6687935);
+              _init(36.2033473, -81.6687935);
             },
             tooltip: 'AMB',
             child: const Icon(Icons.local_drink),
