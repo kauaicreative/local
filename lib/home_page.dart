@@ -15,7 +15,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final String version = "1.0.2";
+  final String version = "1.0.3";
   String _location = "";
   String _info = "";
 
@@ -59,7 +59,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("$widget.title $version"),
+        title: Text("${widget.title} $version"),
       ),
 
       // body: TalkerScreen(talker: widget.talker),
