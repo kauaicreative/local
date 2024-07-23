@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:url_launcher/url_launcher.dart';
+import '../config.dart';
 // import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 Future<String> searchNearby({
@@ -10,13 +11,10 @@ Future<String> searchNearby({
 }) async {
   var client = http.Client();
 
-  print(Uri.base.queryParameters['api']);
-
-  // String? apiKey = dotenv.env['GOOGLE_MAPS_API'];
-  String? apiKey = Uri.base.queryParameters['api'];
-  if (apiKey == null) {
-    throw ArgumentError('API key is required');
-  }
+  String? apiKey = Config.googleMapsApiKey;
+  // String? apiKey = String.fromEnvironment('GOOGLE_MAPS_API_KEY');
+  // String? apiKey = Uri.base.queryParameters['api'];
+  // if (apiKey == null) throw ArgumentError('API key is required');
 
   if (lat == null || lng == null) {
     throw ArgumentError('Latitude and longitude are required');

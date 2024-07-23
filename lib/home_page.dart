@@ -27,6 +27,7 @@ class _MyHomePageState extends State<MyHomePage> {
     if (lat == null) {
       setState(() {
         _location = "Getting location...";
+        _info = '';
       });
       final location = await LocationService.getLocation();
       lat = location['lat'];
@@ -68,16 +69,11 @@ class _MyHomePageState extends State<MyHomePage> {
                     style: Theme.of(context).textTheme.bodyMedium),
               ),
               SizedBox(height: 20),
-              Text('Info:',
-                  style: Theme.of(context).textTheme.headlineSmall),
+              Text('Info:', style: Theme.of(context).textTheme.headlineSmall),
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: SelectableText(
-                  _info,
-                  style: Theme.of(context)
-                      .textTheme
-                      .bodyMedium
-                ),
+                child: SelectableText(_info,
+                    style: Theme.of(context).textTheme.bodyMedium),
               ),
               SizedBox(height: 20), // Add spacing between text and buttons
             ],
