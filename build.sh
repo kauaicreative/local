@@ -2,7 +2,7 @@
 
 # Build the Flutter web app
 # flutter build web
-flutter build web --dart-define=GOOGLE_MAPS_API_KEY=AIzaSyDdtoNEA3bmTJnyBzE2WHuoZL5ENpev_ks
+flutter build web
 
 # Create the docs directory if it doesn't exist
 mkdir -p docs

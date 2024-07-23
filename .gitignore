@@ -1,6 +1,4 @@
-build.sh
 *.env
-dotenv
 private-notes.txt
 
 # Miscellaneous

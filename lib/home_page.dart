@@ -15,7 +15,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final String version = "1.0.1";
+  final String version = "1.0.2";
   String _location = "";
   String _info = "";
 
