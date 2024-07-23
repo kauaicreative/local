@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'services/places_service.dart';
 import 'services/location_service.dart';
+// import 'config.dart';
 // import 'package:logger_screen/logger_screen.dart';
 // import 'package:url_launcher/url_launcher.dart';
 // import 'package:flutter_json_view/flutter_json_view.dart';
@@ -14,6 +15,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  final String version = "1.0.1";
   String _location = "";
   String _info = "";
 
@@ -34,15 +36,21 @@ class _MyHomePageState extends State<MyHomePage> {
       lng = location['lng'];
     }
 
-    setState(() {
-      _location = '$lat, $lng';
-    });
+    if (lat == null || lng == null) {
+      setState(() {
+        _location = 'Can not get location $lat, $lng';
+      });
+    } else {
+      setState(() {
+        _location = '$lat, $lng';
+      });
 
-    String result = await searchNearby(lat: lat, lng: lng);
+      String result = await searchNearby(lat: lat, lng: lng);
 
-    setState(() {
-      _info = result;
-    });
+      setState(() {
+        _info = result;
+      });
+    }
 
     // print(result.places.websiteUri);
   }
@@ -51,7 +59,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Text("$widget.title $version"),
       ),
 
       // body: TalkerScreen(talker: widget.talker),

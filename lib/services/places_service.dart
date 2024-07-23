@@ -6,19 +6,15 @@ import '../config.dart';
 // import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 Future<String> searchNearby({
-  required double? lat,
-  required double? lng,
+  required double lat,
+  required double lng,
 }) async {
   var client = http.Client();
 
   String? apiKey = Config.googleMapsApiKey;
   // String? apiKey = String.fromEnvironment('GOOGLE_MAPS_API_KEY');
-  // String? apiKey = Uri.base.queryParameters['api'];
+  // if (Uri.base.queryParameters['api'] != null) { apiKey = Uri.base.queryParameters['api']; }
   // if (apiKey == null) throw ArgumentError('API key is required');
-
-  if (lat == null || lng == null) {
-    throw ArgumentError('Latitude and longitude are required');
-  }
 
   print("Searching at: Lat: $lat, Lng: $lng"); // Debug print
 
@@ -83,15 +79,12 @@ Future<String> searchNearby({
 void _launchURL(String urlString) async {
   final Uri url = Uri.parse(urlString);
   try {
-    // Check if the URL can be launched
     if (await canLaunchUrl(url)) {
-      // Launch the URL
       await launchUrl(url, mode: LaunchMode.externalApplication);
     } else {
       throw 'Could not launch $urlString';
     }
   } catch (e) {
-    // Handle errors
     debugPrint('Error launching URL: $e');
   }
 }
