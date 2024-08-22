@@ -1,9 +1,19 @@
 import 'package:flutter/material.dart';
-import 'app.dart';
-// import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'home_page.dart';
 
-Future main() async {
-  // await dotenv.load(fileName: ".env");
+void main() {
+  runApp(MyApp());
+}
 
-  runApp(const MyApp());
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'My App',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: MyHomePage(title: 'QClick'),
+    );
+  }
 }

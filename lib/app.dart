@@ -7,12 +7,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Local',
+      title: 'Qclick',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
-        useMaterial3: true,
+        // fontFamily: "Averir",
+        // colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue), // FF001E
+        // colorSchemeSeed: const Color(0xff000000),
+        // colorSchemeSeed: const Color(0xffFF001E),
+        // colorScheme: Theme.of(context) .colorScheme .copyWith(primary: const Color(0xffFF001E)), useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Local'),
+      home: const MyHomePage(title: 'Qclick'),
     );
   }
 }
